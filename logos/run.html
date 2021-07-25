@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+		html,body,header {
+			margin: 0;
+			padding: 0;
+		}
+		</style>
+	</head>
+	
+	<body>
+		<script>
+		
+			if(localStorage["CONFIG_LANGUAGE"] == undefined)
+			{
+				location = "/logos/config.html";
+			}
+			
+			handler = function(event){
+				if(event.keyCode == 121){
+					location = "/logos/config.html";
+				}
+				else
+				{
+					window.removeEventListener("keydown");
+				}
+			}
+			window.addEventListener("keydown", handler);
+			
+			document.write('<iframe src="/logos/2020/kitsune/rc6/kitsune20.html?hl='+localStorage["CONFIG_LANGUAGE"]+'" width="100%" height="100%" frameBorder="0">');
+			
+		</script>
+	</body>
+</html>

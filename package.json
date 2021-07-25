@@ -1,10 +1,10 @@
 {
     "name": "Kitsune",
-    "main": "logos/2020/kitsune/rc6/kitsune20.html",
+    "main": "logos/run.html",
     "window": {
         "title": "Kitsune",
         "width": 960,
         "height": 544,
-	"icon":"logos/favicon.ico"
+	"icon":"logos/icon.png"
     }
 }
