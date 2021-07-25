@@ -1,8 +1,8 @@
 # KitsuneOffline
-Offline (NW.JS package) for Kitsune Google Doodle, (The championship island thing) 
+Local Offline version of Kitsune Google Doodle, (Doodle Champion Island Games) 
+useful if you want to play without internet (or just want to mod the game)
 
-also includes version rc6 of the game in 'logos/' folder. 
-you can run a web server and just browse to the thing if you want, you dont acturally need this, its just easier.
+*rc6 version files located in logos/ folder*
 
 How to play: (for noobs)  
 Goto the releases page, download the zip and open kitsune.exe, there your done!   
