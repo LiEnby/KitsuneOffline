@@ -1,20 +1,35 @@
-# KitsuneOffline
-Local Offline version of Kitsune Google Doodle, (Doodle Champion Island Games) 
-useful if you want to play without internet (or just want to mod the game)
+![Game.apk](app/src/main/res/mipmap-xxxhdpi/app_icon.png)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H55F9KTF8JWBS)
 
-*rc6 version files located in logos/ folder*
+## What is the MV Android Client
 
-How to play: (for noobs)  
-Goto the releases page, download the zip and open kitsune.exe, there your done!   
-https://github.com/KuromeSan/KitsuneOffline/releases/latest   
-   
-For pros (or if you just dont trust my executables):   
-WHAT DO YOU MEAN YOU DONT TRUST SOME RANDOM DUDE ON THE INTERNETS EXECUTABLES???!!!    
-gosh okay, you wanna do it yourself? FINE    
-    
-download the latest nw.js from: https://nwjs.io/downloads/,   
-then download the latest release of https://github.com/iteufel/nwjs-ffmpeg-prebuilt and replace nwjs ffmpeg.dll with that one   
-(this makes video playback work)    
-   
-finally copy package.json and logos/ from this repository into the NWJS folder. start nw.exe and your done   
-   
+The MV Android Client is a runtime client for the [Android&trade; operating system](https://www.android.com) intended to play games created with the [RPG Maker MV](http://www.rpgmakerweb.com) game development tool-kit.
+
+This client can be used to deploy your game as an Android APK package for distribution.
+
+## How to get MV Android Client
+
+The latest (master branch) of the client can be downloaded via this URL:
+https://github.com/AltimitSystems/mv-android-client/zipball/master
+
+## Tutorial & Usage Support
+
+A tutorial is hosted at HBGames.org at the following URL:
+[hbgames.org/forums/viewtopic.php?f=48&t=79391](http://www.hbgames.org/forums/viewtopic.php?f=48&t=79391)
+
+Usage support is provided with this tutorial.
+
+You are free to provide a translation of this tutorial with the condition that you link back to this repository and the original English translation hosted at HBGames.org.
+
+## Bugs, issues and enhancements
+
+Please create reports for bugs related to the project at [GitHub issues](https://github.com/AltimitSystems/mv-android-client/issues)
+Suggestions and other forms of feedback and concerns can either be posted as a GitHub issue or in the HBGames.org tutorial thread.
+
+## License
+
+The MV Android Client is under the [Apache License 2.0](https://github.com/AltimitSystems/mv-android-client/blob/master/LICENSE).
+
+## Contributing
+
+Please read the [contributing guide](https://github.com/AltimitSystems/mv-android-client/blob/master/CONTRIBUTING.md) and send pull requests to [https://github.com/AltimitSystems/mv-android-client](https://github.com/AltimitSystems/mv-android-client).
