@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+		html,body,header {
+			margin: 0;
+			padding: 0;
+		}
+		</style>
+	</head>
+	
+	<body>
+		<script>
+		
+			if(localStorage["CONFIG_LANGUAGE"] == undefined)
+			{
+				location = "/logos/config.html";
+			}
+			else
+			{
+				location = "/logos/2020/kitsune/rc6/kitsune20.html?hl="+localStorage["CONFIG_LANGUAGE"]
+			}
+		</script>
+	</body>
+</html>
