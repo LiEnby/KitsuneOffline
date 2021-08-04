@@ -17,6 +17,7 @@
 package com.silica.kitsune;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.net.Uri;
@@ -25,6 +26,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 
 import android.view.View;
+import android.view.WindowManager;
 
 import java.io.File;
 
@@ -56,7 +58,6 @@ public class WebPlayerActivity extends Activity {
                 mSystemUiVisibility |= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
             }
         }
-
         mPlayer = PlayerHelper.create(this);
 
         mPlayer.setKeepScreenOn();

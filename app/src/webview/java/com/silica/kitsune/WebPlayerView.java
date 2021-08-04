@@ -27,6 +27,7 @@ import android.os.Build;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -71,7 +72,7 @@ public class WebPlayerView extends WebView {
     private void init(Context context) {
         mPlayer = new WebPlayer(this);
 
-        setBackgroundColor(Color.BLACK);
+        setBackgroundColor(Color.WHITE);
 
         enableJavascript();
 
