@@ -33,4 +33,4 @@ jobs:
         run: mv nwjs-v0.55.0-linux-x64 KitsuneOffline-linux && mv nwjs-v0.55.0-win-x64 KitsuneOffline-win
         
       - name: list files to make sure we are on the right track
-        run: ls && ls ..
+        run: echo "Build directory:" && ls -A && echo "Repository:" && ls -A ..
