@@ -11,8 +11,8 @@ jobs:
       - name: Get repository code
         uses: actions/checkout@v2
         
-      - name: Create build directory and cd to it
-        run: mkdir build && cd build
+      - name: Create build directory
+        run: mkdir build
         
       - name: Download Windows NW.js
         run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-win-x64.zip
@@ -29,8 +29,8 @@ jobs:
       - name: Delete archives
         run: rm nwjs-v0.55.0-linux-x64.tar.gz nwjs-v0.55.0-win-x64.zip
         
-      - name: Rename NW.js directories
-        run: mv nwjs-v0.55.0-linux-x64 KitsuneOffline-linux && mv nwjs-v0.55.0-win-x64 KitsuneOffline-win
+      - name: Rename and move NW.js directories
+        run: mv nwjs-v0.55.0-linux-x64 build/KitsuneOffline-linux && mv nwjs-v0.55.0-win-x64 build/KitsuneOffline-win
         
       - name: list files to make sure we are on the right track
-        run: echo "Build directory:" && ls -A && echo "Repository:" && ls -A ..
+        run: echo "Build directory:" && ls -A build && echo "Repository:" && ls -A
