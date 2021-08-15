@@ -1,30 +1,27 @@
-name: BUild NW.js apps
+name: Build NW.js apps
 
 on:
   [push, workflow_dispatch]
   
 jobs:
   build:
-    name: BUild Windows app
+    name: Build NW.js apps
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
         uses: actions/checkout@v2
         
-      - name: Download NW.js
+      - name: Download Windows NW.js
         run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-win-x64.zip
         
-      - name: Extract NW.js
+      - name: Extract Windows NW.js
         run: unzip nwjs-v0.55.0-win-x64.zip
-  build:
-    name: Build Linux app
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get repository code
-        uses: actions/checkout@v2
       
-      - name: Download NW.js
+      - name: Download Linux NW.js
         run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-linux-x64.tar.gz
         
-      - name: Extract NW.js
+      - name: Extract Linux NW.js
         run: unzip nwjs-v0.55.0-linux-x64.tar.gz
+        
+      - name: list files
+        run: ls
