@@ -21,7 +21,7 @@ jobs:
         run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-linux-x64.tar.gz
         
       - name: Extract Linux NW.js
-        run: unzip nwjs-v0.55.0-linux-x64.tar.gz
+        run: tar -xvf nwjs-v0.55.0-linux-x64.tar.gz
         
       - name: list files
         run: ls
