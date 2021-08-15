@@ -50,3 +50,14 @@ jobs:
       - name: list files again
         run: echo "Build directory:" && ls -A build && echo "Repository:" && ls -A
         
+      - name: Upload Windows build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-win.zip
+          path: build/KitsuneOffline-win.zip
+          
+      - name: Upload Linux build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-linux.tar.gz
+          path: build/KitsuneOffline-linux.tar.gz
