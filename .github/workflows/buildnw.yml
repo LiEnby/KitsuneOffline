@@ -86,7 +86,7 @@ jobs:
       - name: Create Linux archives
         run: cd build && tar -czvf KitsuneOffline-linux-x64.tar.gz KitsuneOffline-linux-x64 && tar -czvf KitsuneOffline-linux-ia32.tar.gz KitsuneOffline-linux-ia32
         
-      - name: Create MacOS archives
+      - name: Create MacOS archive
         run: cd build && zip -r KitsuneOffline-osx.zip Kitsune.app
         
       - name: Upload Windows x64 build
