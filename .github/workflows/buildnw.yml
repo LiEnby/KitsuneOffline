@@ -71,6 +71,9 @@ jobs:
       - name: Copy desktop file
         run: cp kitsune.desktop build/KitsuneOffline-debian-x64/usr/share/applications
         
+      - name: Create Debian installer
+        run: cd build && dpkg-deb --build KitsuneOffline-Debian-x64
+
       - name: Create Windows archives
         run: cd build && zip -r KitsuneOffline-win-x64.zip KitsuneOffline-win-x64 && zip -r KitsuneOffline-win-ia32.zip KitsuneOffline-win-ia32
         
@@ -100,3 +103,9 @@ jobs:
         with:
           name: KitsuneOffline-linux-ia32.tar.gz
           path: build/KitsuneOffline-linux-ia32.tar.gz
+
+      - name: Upload Debian installer build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-debian-x64.deb
+          path: build/KitsuneOffline-debian-x64.deb
