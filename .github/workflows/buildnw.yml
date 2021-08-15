@@ -55,7 +55,22 @@ jobs:
     
       - name: Rename executables
         run: mv build/KitsuneOffline-linux-x64/nw build/KitsuneOffline-linux-x64/kitsune && mv build/KitsuneOffline-linux-ia32/nw build/KitsuneOffline-linux-ia32/kitsune && mv build/KitsuneOffline-win-x64/nw.exe build/KitsuneOffline-win-x64/kitsune.exe && mv build/KitsuneOffline-win-ia32/nw.exe build/KitsuneOffline-win-ia32/kitsune.exe
-    
+        
+      - name: Create Debian installer file structure
+        run: mkdir build/KitsuneOffline-debian-x64 && mkdir build/KitsuneOffline-debian-x64/usr && mkdir mkdir build/KitsuneOffline-debian-x64/DEBIAN && mkdir build/KitsuneOffline-debian-x64/usr/bin && mkdir build/KitsuneOffline-debian-x64/usr/lib && mkdir build/KitsuneOffline-debian-x64/usr/share && mkdir build/KitsuneOffline-debian-x64/usr/share/applications
+        
+      - name: Copy Linux build to Debian installer
+        run: cp -r build/KitsuneOffline-linux-x64 build/KitsuneOffline-debian-x64/usr/lib
+        
+      - name: Create Symlink to command
+        run: cd build/KitsuneOffline-debian-x64/usr/bin && ln -s ../lib/KitsuneOffline-linux-x64/kitsune
+        
+      - name: Copy control file
+        run: cp DEBIAN/control build/KitsuneOffline-debian-x64/DEBIAN
+        
+      - name: Copy desktop file
+        run: cp kitsune.desktop build/KitsuneOffline-debian-x64/usr/share/applications
+        
       - name: Create Windows archives
         run: cd build && zip -r KitsuneOffline-win-x64.zip KitsuneOffline-win-x64 && zip -r KitsuneOffline-win-ia32.zip KitsuneOffline-win-ia32
         
