@@ -32,5 +32,21 @@ jobs:
       - name: Rename and move NW.js directories
         run: mv nwjs-v0.55.0-linux-x64 build/KitsuneOffline-linux && mv nwjs-v0.55.0-win-x64 build/KitsuneOffline-win
         
-      - name: list files to make sure we are on the right track
+      - name: List files to make sure we are on the right track, which we should be!
         run: echo "Build directory:" && ls -A build && echo "Repository:" && ls -A
+        
+      - name: Create package.nw directories
+        run: mkdir build/KitsuneOffline-linux/package.nw && mkdir build/KitsuneOffline-win/package.nw
+        
+      - name: Copy code to NW.js directories
+        run: cp -r logos build/KitsuneOffline-linux/package.nw && cp package.json build/KitsuneOffline-linux/package.nw && cp -r logos build/KitsuneOffline-win/package.nw && cp package.json build/KitsuneOffline-win/package.nw
+        
+      - name: create Windows archive
+        run: cd build && zip -r KitsuneOffline-win.zip KitsuneOffline-win
+        
+      - name: create Linux archive
+        run: cd build && tar -czvf KitsuneOffline-linux.tar.gz KitsuneOffline-linux
+        
+      - name: list files again
+        run: echo "Build directory:" && ls -A build && echo "Repository:" && ls -A
+        
