@@ -14,16 +14,28 @@ jobs:
       - name: Create build directory
         run: mkdir build
         
-      - name: Download Windows NW.js
+      - name: Download Windows x64 NW.js
         run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-win-x64.zip
         
-      - name: Extract Windows NW.js
-        run: unzip nwjs-v0.55.0-win-x64.zip
-      
-      - name: Download Linux NW.js
+      - name: Download Windows x86 NW.js
+        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-win-x86.zip
+        
+      - name: Download Linux x64 NW.js
         run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-linux-x64.tar.gz
         
-      - name: Extract Linux NW.js
+      - name: Download Linux x86 NW.js
+        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-linux-x86.tar.gz
+        
+      - name: Extract Windows x64 NW.js
+        run: unzip nwjs-v0.55.0-win-x64.zip
+        
+      - name: Extract Windows x86 NW.js
+        run: unzip nwjs-v0.55.0-win-x86.zip
+        
+      - name: Extract Linux x64 NW.js
+        run: tar -xvf nwjs-v0.55.0-linux-x64.tar.gz
+        
+      - name: Extract Linux x64 NW.js
         run: tar -xvf nwjs-v0.55.0-linux-x64.tar.gz
         
       - name: Delete archives
