@@ -1,6 +1,6 @@
 # KitsuneOffline
 
-![CI/CD Badge](https://github.com/thecoder08/KitsuneOffline/actions/workflows/buildnw.yml/badge.svg)
+![CI/CD Badge](https://github.com/KuromeSan/KitsuneOffline/actions/workflows/buildnw.yml/badge.svg)
 
 Local Offline version of Kitsune Google Doodle, (Doodle Champion Island Games) 
 useful if you want to play without internet (or just want to mod the game)
