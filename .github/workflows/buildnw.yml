@@ -44,9 +44,6 @@ jobs:
       - name: Rename and move NW.js directories
         run: mv nwjs-v0.55.0-linux-x64 build/KitsuneOffline-linux-x64 && mv nwjs-v0.55.0-win-x64 build/KitsuneOffline-win-x64 && mv nwjs-v0.55.0-linux-ia32 build/KitsuneOffline-linux-ia32 && mv nwjs-v0.55.0-win-ia32 build/KitsuneOffline-win-ia32
         
-      - name: List files to make sure we are on the right track, which we should be!
-        run: echo "Build directory:" && ls -A build && echo "Repository:" && ls -A
-        
       - name: Create package.nw directories
         run: mkdir build/KitsuneOffline-linux-x64/package.nw && mkdir build/KitsuneOffline-win-x64/package.nw && mkdir build/KitsuneOffline-linux-ia32/package.nw && mkdir build/KitsuneOffline-win-ia32/package.nw
         
@@ -64,9 +61,6 @@ jobs:
         
       - name: Create Linux archives
         run: cd build && tar -czvf KitsuneOffline-linux-x64.tar.gz KitsuneOffline-linux-x64 && zip -r KitsuneOffline-linux-ia32.tar.gz KitsuneOffline-linux-ia32
-        
-      - name: List files again
-        run: echo "Build directory:" && ls -A build && echo "Repository:" && ls -A
         
       - name: Upload Windows x64 build
         uses: actions/upload-artifact@v2
