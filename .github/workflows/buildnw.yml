@@ -48,7 +48,7 @@ jobs:
         run: echo "Build directory:" && ls -A build && echo "Repository:" && ls -A
         
       - name: Create package.nw directories
-        run: mkdir build/KitsuneOffline-linux-x64/package.nw && mkdir build/KitsuneOffline-win-x64/package.nw && mkdir build/KitsuneOffline-linux-ia32 && mkdir build/KitsuneOffline-win-ia32
+        run: mkdir build/KitsuneOffline-linux-x64/package.nw && mkdir build/KitsuneOffline-win-x64/package.nw && mkdir build/KitsuneOffline-linux-ia32/package.nw && mkdir build/KitsuneOffline-win-ia32/package.nw
         
       - name: Copy logos to NW.js directories
         run: cp -r logos build/KitsuneOffline-linux-x64/package.nw && cp -r logos build/KitsuneOffline-win-x64/package.nw && cp -r logos build/KitsuneOffline-linux-ia32/package.nw && cp -r logos build/KitsuneOffline-win-ia32/package.nw
