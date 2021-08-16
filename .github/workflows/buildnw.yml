@@ -4,7 +4,28 @@ on:
   [push, workflow_dispatch]
   
 jobs:
-  build:
+  buildnw:
+    name: Build NW.js apps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v2
+        with:
+          ref: ios
+        
+      - name: Install Cordova
+        run: npm install cordova -g
+        
+      - name: Add iOS platform
+        run: cordova platform add ios
+        
+      - name: Build iOS app
+        run: cordova build ios
+        
+      - name: list files
+        run: echo "main directory:" && ls && echo "ios build folder:" && ls platforms/ios/build && echo "emulator:" && ls platforms/ios/build/emulator
+        
+  buildnw:
     name: Build NW.js apps
     runs-on: ubuntu-latest
     steps:
