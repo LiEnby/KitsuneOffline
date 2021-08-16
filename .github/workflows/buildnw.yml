@@ -19,6 +19,9 @@ jobs:
       - name: Add iOS platform
         run: cordova platform add ios && cd platforms/ios/cordova && npm install ios-sim@latest
         
+      - name: List available platforms
+        run: cordova run --list
+        
       - name: Build iOS app
         run: cordova build ios --target com.apple.CoreSimulator.SimDeviceType.iPhone-7
         
