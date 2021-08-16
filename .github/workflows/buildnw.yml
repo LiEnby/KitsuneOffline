@@ -17,7 +17,7 @@ jobs:
         run: npm install cordova cordova-icon -g
         
       - name: Add iOS platform
-        run: cordova platform add ios
+        run: cordova platform add ios && cd platforms/ios/cordova && npm install ios-sim@latest
         
       - name: Build iOS app
         run: cordova build ios --target iPhone-7
