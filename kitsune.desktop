@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Kitsune
+Comment=An offline version of Google's Kitsune doodle game.
+Exec=kitsune
+Icon=/usr/lib/kitsune-linux-x64/package.nw/logos/favicon.ico
+Terminal=false
+Categories=Game;

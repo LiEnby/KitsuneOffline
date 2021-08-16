@@ -1,0 +1,126 @@
+name: Build NW.js apps
+
+on:
+  [push, workflow_dispatch]
+  
+jobs:
+  build:
+    name: Build NW.js apps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v2
+        
+      - name: Create build directory
+        run: mkdir build
+        
+      - name: Download Windows x64 NW.js
+        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-win-x64.zip
+        
+      - name: Download Windows ia32 NW.js
+        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-win-ia32.zip
+        
+      - name: Download Linux x64 NW.js
+        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-linux-x64.tar.gz
+        
+      - name: Download Linux ia32 NW.js
+        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-linux-ia32.tar.gz
+        
+      - name: Download MacOS NW.js
+        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-osx-x64.zip
+        
+      - name: Extract Windows x64 NW.js
+        run: unzip nwjs-v0.55.0-win-x64.zip
+        
+      - name: Extract Windows ia32 NW.js
+        run: unzip nwjs-v0.55.0-win-ia32.zip
+        
+      - name: Extract Linux x64 NW.js
+        run: tar -xvf nwjs-v0.55.0-linux-x64.tar.gz
+        
+      - name: Extract Linux ia32 NW.js
+        run: tar -xvf nwjs-v0.55.0-linux-ia32.tar.gz
+        
+      - name: Extract MacOS NW.js
+        run: unzip nwjs-v0.55.0-osx-x64.zip
+        
+      - name: Delete archives
+        run: rm nwjs-v0.55.0-linux-x64.tar.gz nwjs-v0.55.0-win-x64.zip nwjs-v0.55.0-linux-ia32.tar.gz nwjs-v0.55.0-win-ia32.zip nwjs-v0.55.0-osx-x64.zip
+        
+      - name: Rename and move NW.js directories
+        run: mv nwjs-v0.55.0-linux-x64 build/KitsuneOffline-linux-x64 && mv nwjs-v0.55.0-win-x64 build/KitsuneOffline-win-x64 && mv nwjs-v0.55.0-linux-ia32 build/KitsuneOffline-linux-ia32 && mv nwjs-v0.55.0-win-ia32 build/KitsuneOffline-win-ia32 && mv nwjs-v0.55.0-osx-x64/nwjs.app build/Kitsune.app
+        
+      - name: Create package.nw directories
+        run: mkdir build/KitsuneOffline-linux-x64/package.nw && mkdir build/KitsuneOffline-win-x64/package.nw && mkdir build/KitsuneOffline-linux-ia32/package.nw && mkdir build/KitsuneOffline-win-ia32/package.nw && mkdir build/Kitsune.app/Contents/Resources/app.nw
+        
+      - name: Copy logos to NW.js directories
+        run: cp -r logos build/KitsuneOffline-linux-x64/package.nw && cp -r logos build/KitsuneOffline-win-x64/package.nw && cp -r logos build/KitsuneOffline-linux-ia32/package.nw && cp -r logos build/KitsuneOffline-win-ia32/package.nw && cp -r logos build/Kitsune.app/Contents/Resources/app.nw
+        
+      - name: Copy package.json to NW.js directories
+        run: cp package.json build/KitsuneOffline-linux-x64/package.nw && cp package.json build/KitsuneOffline-win-x64/package.nw && cp package.json build/KitsuneOffline-linux-ia32/package.nw && cp package.json build/KitsuneOffline-win-ia32/package.nw && cp package.json build/Kitsune.app/Contents/Resources/app.nw
+    
+      - name: Rename executables
+        run: mv build/KitsuneOffline-linux-x64/nw build/KitsuneOffline-linux-x64/kitsune && mv build/KitsuneOffline-linux-ia32/nw build/KitsuneOffline-linux-ia32/kitsune && mv build/KitsuneOffline-win-x64/nw.exe build/KitsuneOffline-win-x64/kitsune.exe && mv build/KitsuneOffline-win-ia32/nw.exe build/KitsuneOffline-win-ia32/kitsune.exe
+        
+      - name: Create Debian installer file structure
+        run: mkdir build/KitsuneOffline-debian-x64 && mkdir build/KitsuneOffline-debian-x64/usr && mkdir mkdir build/KitsuneOffline-debian-x64/DEBIAN && mkdir build/KitsuneOffline-debian-x64/usr/bin && mkdir build/KitsuneOffline-debian-x64/usr/lib && mkdir build/KitsuneOffline-debian-x64/usr/share && mkdir build/KitsuneOffline-debian-x64/usr/share/applications
+        
+      - name: Copy Linux build to Debian installer
+        run: cp -r build/KitsuneOffline-linux-x64 build/KitsuneOffline-debian-x64/usr/lib
+        
+      - name: Create Symlink to command
+        run: cd build/KitsuneOffline-debian-x64/usr/bin && ln -s ../lib/KitsuneOffline-linux-x64/kitsune
+        
+      - name: Copy control file
+        run: cp DEBIAN/control build/KitsuneOffline-debian-x64/DEBIAN
+        
+      - name: Copy desktop file
+        run: cp kitsune.desktop build/KitsuneOffline-debian-x64/usr/share/applications
+        
+      - name: Create Debian installer
+        run: cd build && dpkg-deb --build KitsuneOffline-debian-x64
+
+      - name: Create Windows archives
+        run: cd build && zip -r KitsuneOffline-win-x64.zip KitsuneOffline-win-x64 && zip -r KitsuneOffline-win-ia32.zip KitsuneOffline-win-ia32
+        
+      - name: Create Linux archives
+        run: cd build && tar -czvf KitsuneOffline-linux-x64.tar.gz KitsuneOffline-linux-x64 && tar -czvf KitsuneOffline-linux-ia32.tar.gz KitsuneOffline-linux-ia32
+        
+      - name: Create MacOS archive
+        run: cd build && zip -r KitsuneOffline-osx.zip Kitsune.app
+        
+      - name: Upload Windows x64 build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-win-x64.zip
+          path: build/KitsuneOffline-win-x64.zip
+          
+      - name: Upload Linux x64 build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-linux-x64.tar.gz
+          path: build/KitsuneOffline-linux-x64.tar.gz
+          
+      - name: Upload Windows ia32 build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-win-ia32.zip
+          path: build/KitsuneOffline-win-ia32.zip
+          
+      - name: Upload Linux ia32 build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-linux-ia32.tar.gz
+          path: build/KitsuneOffline-linux-ia32.tar.gz
+
+      - name: Upload Debian installer build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-debian-x64.deb
+          path: build/KitsuneOffline-debian-x64.deb
+
+      - name: Upload MacOS build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-osx.zip
+          path: build/KitsuneOffline-osx.zip

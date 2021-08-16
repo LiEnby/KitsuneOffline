@@ -1,4 +1,7 @@
 # KitsuneOffline
+
+![CI/CD Badge](https://github.com/KuromeSan/KitsuneOffline/actions/workflows/buildnw.yml/badge.svg)
+
 Local Offline version of Kitsune Google Doodle, (Doodle Champion Island Games) 
 useful if you want to play without internet (or just want to mod the game)
 
@@ -18,3 +21,5 @@ then download the latest release of https://github.com/iteufel/nwjs-ffmpeg-prebu
    
 finally copy package.json and logos/ from this repository into the NWJS folder. start nw.exe and your done   
    
+If you like living on the edge:  
+You can download the releases from Github Actions directly. NOTE: THESE BUILDS ARE CREATED AFTER EVERY COMMIT!!! That means that if a game-breaking bug gets accidentally introduced, then the build will be broken and not work. This is in contrast to the releases page where builds are tested before release.

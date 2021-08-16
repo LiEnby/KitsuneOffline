@@ -1,0 +1,8 @@
+Package: kitsune
+Version: 1.0
+Section: custom
+Priority: optional
+Architecture: amd64
+Essential: no
+Maintainer: Lennon McLean
+Description: An offline version of Google's Kitsune doodle game.
