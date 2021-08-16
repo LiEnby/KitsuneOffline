@@ -1,12 +1,12 @@
-name: Build NW.js apps
+name: Build apps
 
 on:
   [push, workflow_dispatch]
   
 jobs:
-  buildnw:
-    name: Build NW.js apps
-    runs-on: ubuntu-latest
+  buildios:
+    name: Build iOS app
+    runs-on: macos-latest
     steps:
       - name: Get repository code
         uses: actions/checkout@v2
