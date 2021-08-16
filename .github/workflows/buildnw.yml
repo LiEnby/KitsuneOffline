@@ -20,7 +20,7 @@ jobs:
         run: cordova platform add ios
         
       - name: Build iOS app
-        run: cordova build ios --target "iPhone-7"
+        run: cordova build ios --target "iPhone XR"
         
       - name: Make .ipa Archive
         run: cd platforms/ios/build/emulator && mkdir Payload && mv Kitsune.app Payload && zip -r kitsune-ios.ipa Payload
