@@ -1,0 +1,10 @@
+{
+    "name": "Kitsune",
+    "main": "logos/run.html",
+    "window": {
+        "title": "Kitsune",
+        "width": 960,
+        "height": 544,
+	"icon":"logos/icon.png"
+    }
+}
