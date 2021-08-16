@@ -22,8 +22,14 @@ jobs:
       - name: Build iOS app
         run: cordova build ios
         
-      - name: list files
-        run: echo "main directory:" && ls && echo "ios build folder:" && ls platforms/ios/build && echo "emulator:" && ls platforms/ios/build/emulator
+      - name: Make .ipa Archive
+        run: cd platforms/ios/build/emulator && mkdir Payload && mv Kitsune.app Payload && zip -r kitsune-ios.ipa Payload
+        
+      - name: Upload iOS app
+        uses: actions/upload-artifact@v2
+        with:
+          name: kitsune-ios.ipa
+          path: platforms/ios/build/emulator/kitsune-ios.ipa
         
   buildnw:
     name: Build NW.js apps
