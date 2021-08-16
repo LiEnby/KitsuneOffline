@@ -13,8 +13,8 @@ jobs:
         with:
           ref: ios
         
-      - name: Install Cordova
-        run: npm install cordova -g
+      - name: Install Cordova and other Cordova programs
+        run: npm install cordova cordova-icon -g
         
       - name: Add iOS platform
         run: cordova platform add ios
