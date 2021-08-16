@@ -23,7 +23,7 @@ jobs:
         run: cordova run --list
         
       - name: Build iOS app
-        run: cordova build ios --target com.apple.CoreSimulator.SimDeviceType.iPhone-7
+        run: cordova build ios --target iPhone-8
         
       - name: Make .ipa Archive
         run: cd platforms/ios/build/emulator && mkdir Payload && mv Kitsune.app Payload && zip -r kitsune-ios.ipa Payload
