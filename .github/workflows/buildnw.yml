@@ -13,17 +13,14 @@ jobs:
         with:
           ref: ios
         
-      - name: Install Cordova and other Cordova programs
-        run: npm install cordova cordova-icon -g
+      - name: Install prerequisites
+        run: npm install cordova cordova-icon -g && xcversion simulators --install=iPhone-7
         
       - name: Add iOS platform
-        run: cordova platform add ios && cd platforms/ios/cordova && npm install ios-sim@latest
-        
-      - name: List available platforms
-        run: cordova run --list
+        run: cordova platform add ios
         
       - name: Build iOS app
-        run: cordova build ios --target iPhone-8
+        run: cordova build ios --target iPhone-7
         
       - name: Make .ipa Archive
         run: cd platforms/ios/build/emulator && mkdir Payload && mv Kitsune.app Payload && zip -r kitsune-ios.ipa Payload
