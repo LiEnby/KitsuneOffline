@@ -13,8 +13,11 @@ jobs:
         with:
           ref: android
 
+      - name: List gradle tasks
+        run: chmod +x gradlew && ./gradlew tasks
+
       - name: Build Android app
-        run: chmod +x gradlew && ./gradlew build
+        run: ./gradlew build
 
       - name: List files
         run: ls
