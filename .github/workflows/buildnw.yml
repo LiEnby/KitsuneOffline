@@ -4,6 +4,21 @@ on:
   [push, workflow_dispatch]
   
 jobs:
+  buildandroid:
+    name: Build Android app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v2
+        with:
+          ref: android
+
+      - name: Build Android app
+        run: ./gradlew build
+
+      - name: List files
+        run: OS
+
   buildios:
     name: Build iOS app
     runs-on: macos-latest
