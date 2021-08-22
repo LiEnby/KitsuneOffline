@@ -1,10 +1,37 @@
-name: Build NW.js apps
+name: Build apps
 
 on:
   [push, workflow_dispatch]
   
 jobs:
-  build:
+  buildios:
+    name: Build iOS app
+    runs-on: macos-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v2
+        with:
+          ref: ios
+        
+      - name: Install Cordova
+        run: npm install cordova -g
+        
+      - name: Add iOS platform
+        run: cordova platform add ios && npm install cordova-icon
+        
+      - name: Build iOS app
+        run: cordova build ios --target iPhone-8
+        
+      - name: Make .ipa Archive
+        run: cd platforms/ios/build/emulator && mkdir Payload && mv Kitsune.app Payload && zip -r kitsune-ios.ipa Payload
+        
+      - name: Upload iOS app
+        uses: actions/upload-artifact@v2
+        with:
+          name: kitsune-ios.ipa
+          path: platforms/ios/build/emulator/kitsune-ios.ipa
+        
+  buildnw:
     name: Build NW.js apps
     runs-on: ubuntu-latest
     steps:
