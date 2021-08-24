@@ -4,6 +4,24 @@ on:
   [push, workflow_dispatch]
   
 jobs:
+  buildandroid:
+    name: Build Android app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v2
+        with:
+          ref: android
+          
+      - name: Build Android app
+        run: chmod +x gradlew && ./gradlew assembleWebview
+
+      - name: Upload Android build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-android.apk
+          path: app/build/outputs/apk/webview/release/app-webview-release-unsigned.apk
+
   buildios:
     name: Build iOS app
     runs-on: macos-latest
