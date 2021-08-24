@@ -12,15 +12,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: android
-
-      - name: List gradle tasks
-        run: chmod +x gradlew && ./gradlew tasks
-
+          
       - name: Build Android app
-        run: ./gradlew assembleWebview
+        run: chmod +x gradlew && ./gradlew assembleWebview
 
       - name: List files
-        run: ls app/build/outputs/apk
+        run: ls app/build/outputs/apk/webview
 
   buildios:
     name: Build iOS app
