@@ -20,7 +20,7 @@ jobs:
         run: ./gradlew assembleWebview
 
       - name: List files
-        run: ls && ls app && ls app/build && ls app/build/outputs
+        run: ls app/build/outputs/apk
 
   buildios:
     name: Build iOS app
