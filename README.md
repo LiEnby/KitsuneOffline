@@ -5,7 +5,7 @@
 Local Offline version of Kitsune Google Doodle, (Doodle Champion Island Games) 
 useful if you want to play without internet (or just want to mod the game)
 
-*rc6 version files located in logos/ folder*
+*rc7 version files located in logos/ folder*
 
 How to play: (for noobs)  
 Goto the releases page, download the zip and open kitsune.exe, there your done!   
