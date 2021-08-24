@@ -26,6 +26,7 @@
 				<option value="en-GB">English (UK)</option>
 				<option value="en" selected>English (US)</option>
 				<option value="es">Spanish; Castilian</option>
+				<option value="es-419">Spanish; South America</option>
 				<option value="et">Estonian</option>
 				<option value="eu">Basque</option>
 				<option value="fa">Persian</option>
@@ -87,56 +88,11 @@
 				<option value="zu">Zulu</option>
 			</select>
 			<br>
-			<hr>
-			<b>SAVEDATA:</b><br>
-			<button onclick="exportSave()">Export Savefile</button>
-			<button onclick="importSave()">Import Savefile</button>
-			<hr>
 			<br>
 			<button onclick="save()">Start Game</button>
-			<br>
-			<h2>Press F10 At Game Start to return to this config menu</h2>
 		</center>
 		
 		<script>
-			
-			
-			exportSave = function(){
-				  var element = document.createElement('a');
-				  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(btoa(JSON.stringify(localStorage))));
-				  element.setAttribute('download', "kitsune.ksav");
-				  element.style.display = 'none';
-				  document.body.appendChild(element);
-				  element.click();
-				  document.body.removeChild(element);
-			}
-			importSave = function(){
-			
-				var element = document.createElement('input');
-				element.setAttribute('type', "file");
-				element.setAttribute('accept', ".ksav");
-				element.setAttribute('id', "saveImportFile");
-				element.style.display = 'none';
-				document.body.appendChild(element);
-				element.addEventListener('change', function() {
-					var fr=new FileReader();
-					fr.onload=function(){
-						try {
-							storage = JSON.parse(atob(fr.result))
-							localStorage.clear();
-							Object.keys(storage).forEach(function (k) {
-								localStorage.setItem(k, storage[k]);
-							});
-							alert("Savedata was imported successfully!");
-						} catch (e) {
-							alert("Savedata was invalid!");
-						}
-					}
-					fr.readAsText(this.files[0]);
-				})
-				element.click();
-				document.body.removeChild(element);
-			}
 			
 			redirect = function(){
 				location = "/logos/run.html";
