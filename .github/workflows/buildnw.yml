@@ -16,8 +16,11 @@ jobs:
       - name: Build Android app
         run: chmod +x gradlew && ./gradlew assembleWebview
 
-      - name: List files
-        run: ls app/build/outputs/apk/webview/release
+      - name: Upload Android build
+        uses: actions/upload-artifact@v2
+        with:
+          name: KitsuneOffline-android.apk
+          path: app/build/outputs/apk/webview/release/app-webview-release-unsigned.apk
 
   buildios:
     name: Build iOS app
