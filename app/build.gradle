@@ -35,8 +35,8 @@ android {
          * Project Identification
          */
         applicationId "com.silica.kitsune" // Change this to your applicationId.
-        versionCode 2 // Set this to a higher number for game updates.
-        versionName "rc6" // This is the version that the player sees.
+        versionCode 3 // Set this to a higher number for game updates.
+        versionName "rc7" // This is the version that the player sees.
 
         compileSdkVersion ANDROID_SDK_TARGET
         targetSdkVersion ANDROID_SDK_TARGET
