@@ -17,7 +17,7 @@ jobs:
         run: chmod +x gradlew && ./gradlew assembleWebview
 
       - name: List files
-        run: ls app/build/outputs/apk/webview
+        run: ls app/build/outputs/apk/webview/release
 
   buildios:
     name: Build iOS app
