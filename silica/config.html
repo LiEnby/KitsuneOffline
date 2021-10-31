@@ -8,6 +8,10 @@
 		<center>
 			<h1>Kitsune Configurator</h1>
 			<hr>
+			<b>VERSION:</b><br>
+			<select id="version">
+			</select><br>
+			<hr>
 			<b>LANGUAGE:</b><br>
 			<select id="language">
 				<option value="af">Afrikaans</option>
@@ -26,7 +30,6 @@
 				<option value="en-GB">English (UK)</option>
 				<option value="en" selected>English (US)</option>
 				<option value="es">Spanish; Castilian</option>
-				<option value="es-419">Spanish; South America</option>
 				<option value="et">Estonian</option>
 				<option value="eu">Basque</option>
 				<option value="fa">Persian</option>
@@ -96,7 +99,7 @@
 			<br>
 			<button onclick="save()">Start Game</button>
 			<br>
-			<h2>Press F10 At Game Start to return to this config menu</h2>
+			<h2>Press F10 to return to this config menu</h2>
 		</center>
 		
 		<script>
@@ -140,13 +143,38 @@
 			}
 			
 			redirect = function(){
-				location = "/logos/run.html";
+				location = "/silica/run.html";
+			}
+			
+			populate = function(){
+				fs = require('fs');
+				files = fs.readdirSync("logos/2020/kitsune");
+				files.forEach(file => {
+					opt = document.createElement("option");
+					opt.value = file;
+					opt.innerText = file;
+					if(file == localStorage["CONFIG_VERSION"])
+						opt.selected = true;
+						
+					document.getElementById("version").add(opt);
+					
+				 });
 			}
 			
 			save = function(){
 				localStorage["CONFIG_LANGUAGE"] = document.getElementById("language").value;
+				localStorage["CONFIG_VERSION"] = document.getElementById("version").value;
 				redirect();
 			}
+			
+			loadSettings = function(){
+				if(localStorage["CONFIG_LANGUAGE"] != undefined)
+					document.getElementById("language").value = localStorage["CONFIG_LANGUAGE"];
+			}
+			
+			populate();
+			loadSettings();
+
 		</script>
 	</body>
 </html>
