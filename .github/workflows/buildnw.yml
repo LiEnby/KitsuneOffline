@@ -98,9 +98,9 @@ jobs:
       - name: Create package.nw directories
         run: mkdir build/KitsuneOffline-linux-x64/package.nw && mkdir build/KitsuneOffline-win-x64/package.nw && mkdir build/KitsuneOffline-linux-ia32/package.nw && mkdir build/KitsuneOffline-win-ia32/package.nw && mkdir build/Kitsune.app/Contents/Resources/app.nw
         
-      - name: Copy logos to NW.js directories
-        run: cp -r logos build/KitsuneOffline-linux-x64/package.nw && cp -r logos build/KitsuneOffline-win-x64/package.nw && cp -r logos build/KitsuneOffline-linux-ia32/package.nw && cp -r logos build/KitsuneOffline-win-ia32/package.nw && cp -r logos build/Kitsune.app/Contents/Resources/app.nw
-        
+      - name: Copy NW.js directories
+        run: cp -r logos build/KitsuneOffline-linux-x64/package.nw && cp -r logos build/KitsuneOffline-win-x64/package.nw && cp -r logos build/KitsuneOffline-linux-ia32/package.nw && cp -r logos build/KitsuneOffline-win-ia32/package.nw && cp -r logos build/Kitsune.app/Contents/Resources/app.nw && cp -r gstatic build/KitsuneOffline-linux-x64/package.nw && cp -r gstatic build/KitsuneOffline-win-x64/package.nw && cp -r gstatic build/KitsuneOffline-linux-ia32/package.nw && cp -r gstatic build/KitsuneOffline-win-ia32/package.nw && cp -r gstatic build/Kitsune.app/Contents/Resources/app.nw && cp -r silica build/KitsuneOffline-linux-x64/package.nw && cp -r silica build/KitsuneOffline-win-x64/package.nw && cp -r silica build/KitsuneOffline-linux-ia32/package.nw && cp -r silica build/KitsuneOffline-win-ia32/package.nw && cp -r silica build/Kitsune.app/Contents/Resources/app.nw
+      
       - name: Copy package.json to NW.js directories
         run: cp package.json build/KitsuneOffline-linux-x64/package.nw && cp package.json build/KitsuneOffline-win-x64/package.nw && cp package.json build/KitsuneOffline-linux-ia32/package.nw && cp package.json build/KitsuneOffline-win-ia32/package.nw && cp package.json build/Kitsune.app/Contents/Resources/app.nw
     
