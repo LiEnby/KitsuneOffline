@@ -11,6 +11,9 @@
 			<b>VERSION:</b><br>
 			<select id="version">
 			</select><br>
+			<button onclick="downloadNewVersion()">Download a new version</button>
+			<div id="downloadInfo">
+			</div>
 			<hr>
 			<b>LANGUAGE:</b><br>
 			<select id="language">
@@ -97,14 +100,17 @@
 			<button onclick="importSave()">Import Savefile</button>
 			<hr>
 			<br>
-			<button onclick="save()">Start Game</button>
+			<button onclick="save()" id="startButton">Start Game</button>
 			<br>
 			<h2>Press F10 to return to this config menu</h2>
 		</center>
 		
 		<script>
-			
-			
+			const allGameFiles = ["kitsune20.html", "messages.kn.nocache.json" ,"rugby-sprite.png" ,"overworld.ogg" ,"messages.iw.nocache.json" ,"cta.png" ,"cta_play.png" ,"rock.mp3" ,"messages.it.nocache.json" ,"CTA-Archery-174787996-174787824.png" ,"messages.th.nocache.json" ,"CTA-Opening-144867217-174787752-174787825-192413481.png" ,"messages.da.nocache.json" ,"messages.tr.nocache.json" ,"messages.ca.nocache.json" ,"pingpongintro.mp4" ,"messages.fi.nocache.json" ,"messages.ar.nocache.json" ,"messages.pl.nocache.json" ,"climbingoutro.mp4" ,"swim-sprite.png" ,"messages.pt-BR.nocache.json" ,"messages.sq.nocache.json" ,"messages.mn.nocache.json" ,"messages.sv.nocache.json" ,"skate.ogg" ,"messages.gl.nocache.json" ,"ballad.ogg" ,"ballad.mp3" ,"messages.ne.nocache.json" ,"swimoutro.mp4" ,"messages.ms.nocache.json" ,"messages.af.nocache.json"  ,"climbing-sprite.png" ,"preload-sprite.png" ,"messages.ja.nocache.json" ,"messages.ml.nocache.json" ,"kitsune20.js" ,"messages.lo.nocache.json" ,"shared.ogg" ,"swimoutro.mp4swimintro.mp4" ,"messages.zh-CN.nocache.json" ,"messages.mr.nocache.json" ,"messages.en.nocache.json" ,"messages.no.nocache.json" ,"messages.km.nocache.json" ,"messages.de.nocache.json" ,"pingpongoutro.mp4" ,"messages.es-419.nocache.json" ,"CTA-Closing-174787829-192414335.png" ,"messages.am.nocache.json" ,"CTA-CenteredPlayButtonFrame2.png" ,"climbing.ogg" ,"CTA-Marathon-174788017-174787794.png" ,"ddr.ogg" ,"disco.mp3" ,"archeryoutro.mp4" ,"messages.hy.nocache.json" ,"messages.eu.nocache.json" ,"pingpong.ogg" ,"archeryintro.mp4" ,"cutscene-sprite.png" ,"video-sprite.png" ,"messages.is.nocache.json" ,"archery.mp3" ,"messages.be.nocache.json" ,"messages.bs.nocache.json" ,"disco.ogg" ,"ddr.mp3" ,"skateoutro.mp4" ,"pingpong.mp3" ,"messages.el.nocache.json" ,"marathon-sprite.png" ,"messages.zu.nocache.json" ,"rugbyoutro.mp4" ,"outro.mp4" ,"messages.pa.nocache.json" ,"climbing.mp3" ,"messages.hr.nocache.json" ,"messages.bn.nocache.json" ,"messages.sw.nocache.json" ,"archery.ogg" ,"overworld-sprite.png" ,"messages.ur.nocache.json" ,"messages.mk.nocache.json" ,"marathonintro.mp4" ,"messages.sk.nocache.json" ,"rock.ogg" ,"marathonoutro.mp4" ,"messages.et.nocache.json" ,"messages.pt-PT.nocache.json" ,"messages.zh-TW.nocache.json" ,"messages.uk.nocache.json" ,"messages.fa.nocache.json" ,"messages.si.nocache.json" ,"messages.es.nocache.json" ,"pingpong-sprite.png" ,"messages.ky.nocache.json" ,"CTA-OffsetPlayButtonFrame1.png" ,"messages.cs.nocache.json" ,"CTA-OffsetPlayButtonFrame2.png" ,"shared.mp3" ,"marathon.mp3" ,"intro.mp4" ,"messages.uz.nocache.json" ,"messages.hi.nocache.json" ,"messages.nl.nocache.json" ,"CTA-Skateboarding-174787927.png" ,"marathon.ogg" ,"overworld.mp3" ,"archery-sprite.png" ,"messages.lt.nocache.json" ,"messages.kk.nocache.json" ,"kitsune_compiled_deferred_module.js" ,"skate.mp3" ,"messages.en-GB.nocache.json" ,"messages.bg.nocache.json" ,"CTA-Swimming-174787828-174787766.png" ,"messages.my.nocache.json" ,"messages.hu.nocache.json" ,"messages.ru.nocache.json" ,"skate-sprite.png" ,"CTA-CenteredPlayButtonFrame1.png" ,"messages.te.nocache.json" ,"messages.zh-HK.nocache.json" ,"messages.lv.nocache.json" ,"rugbyintro.mp4" ,"messages.ko.nocache.json" ,"rugby.mp3" ,"CTA_Climbing-174787997.png" ,"messages.ro.nocache.json" ,"shared-sprite.png" ,"messages.ta.nocache.json" ,"messages.vi.nocache.json" ,"messages.sl.nocache.json" ,"messages.ka.nocache.json" ,"messages.fr.nocache.json" ,"climbingintro.mp4" ,"CTA-Rugby-174787947-174787773.png" ,"skateintro.mp4" ,"messages.gu.nocache.json" ,"messages.id.nocache.json" ,"rugby.ogg" ,"CTA-TableTennis-174787827-174787820.png" ,"messages.az.nocache.json" ,"messages.sr.nocache.json"];
+			const fs = require('fs');
+			const http = require('https');
+			var totalDownloaded = 0;
+
 			exportSave = function(){
 				  var element = document.createElement('a');
 				  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(btoa(JSON.stringify(localStorage))));
@@ -147,7 +153,6 @@
 			}
 			
 			populate = function(){
-				fs = require('fs');
 				files = fs.readdirSync("logos/2020/kitsune");
 				files.forEach(file => {
 					opt = document.createElement("option");
@@ -165,6 +170,69 @@
 				localStorage["CONFIG_LANGUAGE"] = document.getElementById("language").value;
 				localStorage["CONFIG_VERSION"] = document.getElementById("version").value;
 				redirect();
+			}
+			
+			downloadFile = function(url, dest, cb){
+			
+				const file = fs.createWriteStream(dest);
+
+				const request = http.get(url, (response) => {
+					if (response.statusCode !== 200) {
+						return cb(url+' status was ' + response.statusCode);
+					}
+
+					response.pipe(file);
+				});
+
+				file.on('finish', function() { file.close(cb) });
+
+				request.on('error', (err) => {
+					fs.unlink(dest, function() { downloadFile(url, dest, cb) });
+				});
+
+				file.on('error', (err) => { 
+					fs.unlink(dest, function() { downloadFile(url, dest, cb) });
+				});
+			};
+			
+			downloadNewVersion = function(){
+				var downloadVersion = prompt("What version to DL? (known versions are: rc1-rc7, dev1-dev9", "rc7");
+				
+								
+				var outputDirectory = "logos/2020/kitsune/"+downloadVersion+"/";
+				var fromSite = "https://www.google.com/logos/2020/kitsune/"+downloadVersion+"/";
+				
+				const request = http.get(fromSite+allGameFiles[0], (response) => {
+					if (response.statusCode !== 200) {
+						alert("Version does not exist on google's servers: got status "+response.statusCode);
+						return;
+					}
+					else{
+						document.getElementById("startButton").disabled = true;
+
+						if (!fs.existsSync(outputDirectory)){
+							fs.mkdirSync(outputDirectory);
+						}
+						
+						totalDownloaded = 0;
+						allGameFiles.forEach(fileToDownload => {
+							
+							downloadFile(fromSite+fileToDownload, outputDirectory+fileToDownload, function(cb){ 
+								totalDownloaded++;
+								document.getElementById("downloadInfo").innerText = "Downloading: "+totalDownloaded+"/"+allGameFiles.length + " ("+Math.round((totalDownloaded/allGameFiles.length)*100)+"%)"; 
+								
+								if(totalDownloaded == allGameFiles.length){
+									location.reload();
+								}
+							})
+						});
+					}
+				});
+				
+				request.on('error', (err) => {
+					alert("Failed to connect: "+err.message);
+				});
+				
 			}
 			
 			loadSettings = function(){
