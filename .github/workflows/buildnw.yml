@@ -60,40 +60,40 @@ jobs:
         run: mkdir build
         
       - name: Download Windows x64 NW.js
-        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-win-x64.zip
+        run: wget https://dl.nwjs.io/v0.66.1/nwjs-v0.66.1-win-x64.zip
         
       - name: Download Windows ia32 NW.js
-        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-win-ia32.zip
+        run: wget https://dl.nwjs.io/v0.66.1/nwjs-v0.66.1-win-ia32.zip
         
       - name: Download Linux x64 NW.js
-        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-linux-x64.tar.gz
+        run: wget https://dl.nwjs.io/v0.66.1/nwjs-v0.66.1-linux-x64.tar.gz
         
       - name: Download Linux ia32 NW.js
-        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-linux-ia32.tar.gz
+        run: wget https://dl.nwjs.io/v0.66.1/nwjs-v0.66.1-linux-ia32.tar.gz
         
       - name: Download MacOS NW.js
-        run: wget https://dl.nwjs.io/v0.55.0/nwjs-v0.55.0-osx-x64.zip
+        run: wget https://dl.nwjs.io/v0.66.1/nwjs-v0.66.1-osx-x64.zip
         
       - name: Extract Windows x64 NW.js
-        run: unzip nwjs-v0.55.0-win-x64.zip
+        run: unzip nwjs-v0.66.1-win-x64.zip
         
       - name: Extract Windows ia32 NW.js
-        run: unzip nwjs-v0.55.0-win-ia32.zip
+        run: unzip nwjs-v0.66.1-win-ia32.zip
         
       - name: Extract Linux x64 NW.js
-        run: tar -xvf nwjs-v0.55.0-linux-x64.tar.gz
+        run: tar -xvf nwjs-v0.66.1-linux-x64.tar.gz
         
       - name: Extract Linux ia32 NW.js
-        run: tar -xvf nwjs-v0.55.0-linux-ia32.tar.gz
+        run: tar -xvf nwjs-v0.66.1-linux-ia32.tar.gz
         
       - name: Extract MacOS NW.js
-        run: unzip nwjs-v0.55.0-osx-x64.zip
+        run: unzip nwjs-v0.66.1-osx-x64.zip
         
       - name: Delete archives
-        run: rm nwjs-v0.55.0-linux-x64.tar.gz nwjs-v0.55.0-win-x64.zip nwjs-v0.55.0-linux-ia32.tar.gz nwjs-v0.55.0-win-ia32.zip nwjs-v0.55.0-osx-x64.zip
+        run: rm nwjs-v0.66.1-linux-x64.tar.gz nwjs-v0.66.1-win-x64.zip nwjs-v0.66.1-linux-ia32.tar.gz nwjs-v0.66.1-win-ia32.zip nwjs-v0.66.1-osx-x64.zip
         
       - name: Rename and move NW.js directories
-        run: mv nwjs-v0.55.0-linux-x64 build/KitsuneOffline-linux-x64 && mv nwjs-v0.55.0-win-x64 build/KitsuneOffline-win-x64 && mv nwjs-v0.55.0-linux-ia32 build/KitsuneOffline-linux-ia32 && mv nwjs-v0.55.0-win-ia32 build/KitsuneOffline-win-ia32 && mv nwjs-v0.55.0-osx-x64/nwjs.app build/Kitsune.app
+        run: mv nwjs-v0.66.1-linux-x64 build/KitsuneOffline-linux-x64 && mv nwjs-v0.66.1-win-x64 build/KitsuneOffline-win-x64 && mv nwjs-v0.66.1-linux-ia32 build/KitsuneOffline-linux-ia32 && mv nwjs-v0.66.1-win-ia32 build/KitsuneOffline-win-ia32 && mv nwjs-v0.66.1-osx-x64/nwjs.app build/Kitsune.app
         
       - name: Create package.nw directories
         run: mkdir build/KitsuneOffline-linux-x64/package.nw && mkdir build/KitsuneOffline-win-x64/package.nw && mkdir build/KitsuneOffline-linux-ia32/package.nw && mkdir build/KitsuneOffline-win-ia32/package.nw && mkdir build/Kitsune.app/Contents/Resources/app.nw
