@@ -12,7 +12,7 @@ Goto the releases page, download the zip and open kitsune.exe, there your done!
 https://github.com/KuromeSan/KitsuneOffline/releases/latest   
    
 For pros (or if you just dont trust my executables):   
-WHAT DO YOU MEAN YOU DONT TRUST SOME RANDOM DUDE ON THE INTERNETS EXECUTABLES???!!!    
+WHAT DO YOU MEAN YOU DONT TRUST SOME RANDOM GAL ON THE INTERNETS EXECUTABLES???!!!    
 gosh okay, you wanna do it yourself? FINE    
     
 download the latest nw.js from: https://nwjs.io/downloads/,   
